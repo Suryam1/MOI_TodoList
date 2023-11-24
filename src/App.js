@@ -191,9 +191,18 @@ function App() {
                     </span>
                   )
                 }
-                <span onClick={()=>editTodo(index)} className="underline text-red pointer">
-                  {editing === index? <Loader color={"#000"} loading={editing === 0 ? true:editing} /> :"Edit"}
-                </span>
+                {
+                  todo.deleted ? (
+                    <span className="underline text-red disabled">
+                      Cant Edit
+                    </span>
+                  )
+                  :
+                  ( <span onClick={()=>editTodo(index)} className="underline text-red pointer">
+                       {editing === index? <Loader color={"#000"} loading={editing === 0 ? true:editing} /> :"Edit"}
+                    </span>
+                )
+                }
               </div>
             );
           })}
